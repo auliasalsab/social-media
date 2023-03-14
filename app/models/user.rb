@@ -11,7 +11,7 @@ class User < ApplicationRecord
               with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
             }
   validates :password_digest, presence: true
-
+  
   def new_attributes
     {
       id: self.id,
