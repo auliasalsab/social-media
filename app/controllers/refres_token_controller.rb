@@ -1,0 +1,2 @@
+class RefresTokenController < ApplicationController
+end
