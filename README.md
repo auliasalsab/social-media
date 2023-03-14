@@ -51,3 +51,5 @@ console.log(filterItems(fruits, "an")); // ['banana', 'mango', 'orange']
 x = ['ashari', 'agus', 'andri']
 x.grep(/as/)
 return x
+
+## test
