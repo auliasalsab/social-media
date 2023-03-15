@@ -3,9 +3,11 @@
 #
 # Examples:
 
-100.times do
-  Book.create(
-    name: Faker::Name.name,
+50.times do
+  Post.create(
+    caption: Faker::Quote.most_interesting_man_in_the_world,
+    type: 1,
+    user_id: 1
   )
 end
 #   Character.create(name: "Luke", movie: movies.first)
