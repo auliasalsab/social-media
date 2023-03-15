@@ -1,7 +1,22 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
+User.create(
+  [
+    {
+      name: 'ashari',
+      email: 'asharimidana@gmail.com',
+      password: '123456'
+    },
+    {
+      name: 'aulia',
+      email: 'aulia@gmail.com',
+      password: '123456'
+    },
+    {
+      name: 'user lain',
+      email: 'userlain@gmail.com',
+      password: '123456'
+    }
+  ]
+)
 
 50.times do
   Post.create(
@@ -10,4 +25,33 @@
     user_id: 1
   )
 end
-#   Character.create(name: "Luke", movie: movies.first)
+
+
+Comment.create(
+  [
+    {
+      comment_text: Faker::Markdown.emphasis,
+      user_id: 1,
+      post_id: 3,
+      parent_id: nil 
+    },
+    {
+      comment_text: Faker::Markdown.emphasis,
+      user_id: 2,
+      post_id: 3,
+      parent_id: nil   
+    },
+    {
+      comment_text: Faker::Markdown.emphasis,
+      user_id: 1,
+      post_id: 3,
+      parent_id: 2 
+    },
+    {
+      comment_text: Faker::Markdown.emphasis,
+      user_id: 2,
+      post_id: 3,
+      parent_id: 2 
+    }
+  ]
+)
