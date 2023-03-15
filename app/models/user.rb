@@ -1,5 +1,8 @@
 class User < ApplicationRecord
   has_secure_password
+  # has_one :profile, dependent: :destroy
+  has_many :follower, class_name: 'Follow', dependent: :destroy, foreign_key: 'follower_id'
+  has_many :following, class_name: 'Follow', dependent: :destroy, foreign_key: 'following_id'
 
   validates :name, presence: true, length: { maximum: 50 }
   validates :email,
