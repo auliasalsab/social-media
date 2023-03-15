@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   post "/token", to: "refres_tokens#token"
   resources :users
   resources :books
+  resources :posts
+
 end

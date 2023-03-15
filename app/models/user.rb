@@ -20,8 +20,7 @@ class User < ApplicationRecord
     {
       id: self.id,
       name: self.name,
-      email: self.email,
-      refres_token: self.refres_token
+      email: self.email
     }
   end
 end
