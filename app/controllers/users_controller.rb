@@ -25,16 +25,15 @@ class UsersController < ApplicationController
     @user = User.find_by(email: user_params[:email])
     exp = Time.now.to_i + 20
     payload = { user_id: @user.id, exp: exp }
-    refres_token = { user_id: @user.id, exp: exp + 24 * 3600 }
+    # refres_token = { user_id: @user.id, exp: exp + 24 * 3600 }
 
     if @user && @user.authenticate_password(user_params[:password])
       token = encode_token(payload)
       refres_token = encode_token(refres_token)
-      @user.update(refres_token: refres_token)
+      # @user.update(refres_token: refres_token)
       render json: {
                user: @user,
-               token: token,
-               refres_token: refres_token
+               token: token
              },
              status: :ok
     else
@@ -48,7 +47,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.permit(:name, :email, :password, :refres_token)
+    params.permit(:name, :email, :password )
   end
 
   def not_found
