@@ -29,7 +29,7 @@ class UsersController < ApplicationController
 
     if @user && @user.authenticate_password(user_params[:password])
       token = encode_token(payload)
-      refres_token = encode_token(refres_token)
+      # refres_token = encode_token(refres_token)
       # @user.update(refres_token: refres_token)
       render json: {
                user: @user,
