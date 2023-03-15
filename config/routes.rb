@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  get "/", to: "posts#home"
+
   post "/login", to: "users#login"
   post "/token", to: "refres_tokens#token"
   resources :users
