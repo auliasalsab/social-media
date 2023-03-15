@@ -6,7 +6,7 @@
 50.times do
   Post.create(
     caption: Faker::Quote.most_interesting_man_in_the_world,
-    type: 1,
+    post_type: 1,
     user_id: 1
   )
 end
