@@ -11,5 +11,7 @@ Rails.application.routes.draw do
   resources :users
   resources :books
   resources :posts
+  resources :profiles
+
 
 end
