@@ -20,6 +20,7 @@
 
 # Ignore uploaded files in development.
 /storage/*
+/.vscode/*
 !/storage/.keep
 /tmp/storage/*
 !/tmp/storage/
@@ -28,3 +29,4 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 /config/database.yml
+/db/schema.rb
