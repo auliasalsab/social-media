@@ -23,7 +23,7 @@ class UsersController < ApplicationController
 
   def login
     @user = User.find_by(email: user_params[:email])
-    exp = Time.now.to_i + 20
+    exp = Time.now.to_i + 3600 
     payload = { user_id: @user.id, exp: exp }
     # refres_token = { user_id: @user.id, exp: exp + 24 * 3600 }
 

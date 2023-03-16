@@ -8,7 +8,8 @@ class Profile < ApplicationRecord
     validates :bio, presence: true
 
 
-    def new_attributes {
+    def new_attributes 
+      {
         id: self.id,
         user: self.user,
         phone_number: self.phone_number,

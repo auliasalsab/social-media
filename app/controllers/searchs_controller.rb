@@ -7,10 +7,11 @@ class SearchsController < ApplicationController
   def search
     q = post_params["q"]
     post = search_data ("%#{q}%")
-      render json: {searhing_count: post.length, post: post}
+    render json: { searhing_count: post.length, post: post }
   end
 
   private
+
   def search_data(q)
     logger.debug "===================="
     # logger.debug book
@@ -19,7 +20,7 @@ class SearchsController < ApplicationController
       post.map do |pos|
         {
           id: pos.id,
-          user: pos.user['name'],
+          user: pos.user["name"],
           caption: pos.caption,
           type: pos.post_type,
           updated: pos.updated_at
