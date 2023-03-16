@@ -12,6 +12,5 @@ Rails.application.routes.draw do
   resources :books
   resources :posts
   resources :profiles
-
-
+  resources :follows
 end
