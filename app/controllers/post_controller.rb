@@ -15,13 +15,13 @@ class PostController < ApplicationController
 
     # POST /posts
     def create
-        @post= User.find_by_id(post_params[:user_id])
-        if @user.nil? 
+        @post= Post.find_by_id(post_params[:user_id])
+        if @post.nil? 
             return render json: {
                 message: "User not found"
             }, status: :bad_request
         end
-        @post = Route.new(route_params)
+        @post = Post.new(Post_params)
 
 
         if @post.save
@@ -51,7 +51,7 @@ class PostController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
-        @post = Route.find_by_id(params[:id])
+        @post = Post.find_by_id(params[:id])
       if @post.nil?
         render json: { error: "post not found" }, status: :not_found
       end
@@ -59,6 +59,6 @@ class PostController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def post_params
-      params.require(:route).permit(:caption, :post_type, :user_id)
+      params.require(:post).permit(:caption, :post_type, :user_id)
     end
 end
