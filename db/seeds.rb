@@ -26,6 +26,22 @@ User.create(
   )
 end
 
+10.times do
+  Post.create(
+    caption: Faker::Quote.most_interesting_man_in_the_world,
+    post_type: 2,
+    user_id: 2 
+  )
+end
+
+10.times do
+  Post.create(
+    caption: Faker::Quote.most_interesting_man_in_the_world,
+    post_type: 2,
+    user_id: 2 
+  )
+end
+
 
 Comment.create(
   [
