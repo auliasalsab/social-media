@@ -23,7 +23,7 @@ class SearchsController < ApplicationController
           user: pos.user["name"],
           caption: pos.caption,
           type: pos.post_type,
-          updated: pos.updated_at
+          created: pos.created_at
         }
       end
     )

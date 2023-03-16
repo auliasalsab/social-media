@@ -1,10 +1,9 @@
-class PostController < ApplicationController
+class PostsController < ApplicationController
     before_action :set_user, only: [:show, :update, :destroy]
 
     # GET /posts
     def index
         @posts= Post.all
-        
         render json: @posts.map { |post| post.new_attributes }
     end
 
