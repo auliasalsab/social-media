@@ -1,21 +1,23 @@
 class Profile < ApplicationRecord
   belongs_to :user
 
-  validates :user_id, presence: true
-  validates :phone_number, presence: true
-  validates :dob, presence: true
-  validates :gender, presence: true
-  validates :bio, presence: true
+  validates :user_id, presence: true, uniqueness: true
 
   def new_attributes
-    {
-      id: self.id,
-      user: self.user,
-      phone_number: self.phone_number,
-      dob: self.dob,
-      gender: self.gender,
-      bio: self.bio,
-      created_at: self.created_at
-    }
+    gender = %w[laki-laki perempuan]
+    return(
+      {
+        id: self.id,
+        user: {
+          id: self.user.id,
+          name: self.user.name
+        },
+        phone_number: self.phone_number,
+        dob: self.dob,
+        gender: gender[self.gender - 1],
+        bio: self.bio,
+        created_at: self.created_at
+      }
+    )
   end
 end

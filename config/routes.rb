@@ -7,10 +7,12 @@ Rails.application.routes.draw do
   get "/s/", to: "searchs#search"
 
   post "/login", to: "users#login"
-  post "/token", to: "refres_tokens#token"
   resources :users
+
   resources :books
+  resources :likes
   resources :posts
   resources :profiles
   resources :follows
+  resources :comments
 end

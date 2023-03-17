@@ -7,14 +7,13 @@ class SearchsController < ApplicationController
   def search
     q = post_params["q"]
     post = search_data ("%#{q}%")
+    # binding.pry
     render json: { searhing_count: post.length, post: post }
   end
 
   private
 
   def search_data(q)
-    logger.debug "===================="
-    # logger.debug book
     post = Post.where("caption iLIKE ?", q)
     return(
       post.map do |pos|

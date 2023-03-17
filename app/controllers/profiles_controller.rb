@@ -3,33 +3,33 @@ class ProfilesController < ApplicationController
     before_action :set_profile, only: [:show, :update, :destroy]
 
     # GET /profiles
-    def index
-        @profiles= Profile.all
+    # def index
+    #     @profiles= Profile.all
         
-        render json: @profiles.map { |profile| profile.new_attributes}
-    end
+    #     render json: @profiles.map { |profile| profile.new_attributes}
+    # end
 
     # GET /profiles/1
     def show
         render json: @profile.new_attributes
     end
 
-    # POST /profiles
-    def create
-        @user= User.find_by_id(profile_params[:user_id])
-        if @user.nil? 
-            return render json: {
-                message: "User not found"
-            }, status: :bad_request
-        end
-        @profile = Profile.new(profile_params)
+    # # POST /profiles
+    # def create
+    #     @user= User.find_by_id(profile_params[:user_id])
+    #     if @user.nil? 
+    #         return render json: {
+    #             message: "User not found"
+    #         }, status: :bad_request
+    #     end
+    #     @profile = Profile.new(profile_params)
 
-        if @profile.save
-            render json: @profile.new_attributes, status: :created
-        else
-            render json: @profile.errors, status: :unprocessable_entity
-        end
-    end
+    #     if @profile.save
+    #         render json: @profile.new_attributes, status: :created
+    #     else
+    #         render json: @profile.errors, status: :unprocessable_entity
+    #     end
+    # end
 
     # PATCH/PUT /profile/1
     def update
