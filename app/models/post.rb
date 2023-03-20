@@ -6,9 +6,12 @@ class Post < ApplicationRecord
 
   validates :user_id, presence: true
   validates :caption, presence: true
-  # === GET BY ID
 
-  # enum authorization: [default: 0, moderator: 1, admin: 2]
+  enum post_type: { 
+    public_post: 1, 
+    private_post: 2
+  }
+
   def get_post_by_id
     # Binding.pry
     comment = self.comments.where(parent_id: nil).limit(2)
@@ -20,9 +23,8 @@ class Post < ApplicationRecord
         caption: self.caption,
         total_comment: comment_count,
         total_like: self.likes.count,
-        # comment: new_comment_attributes(comment),
         comment: new_comment_attributes(comment),
-        type: type_post(self.post_type - 1),
+        type: self.post_type,
         created: self.created_at
       }
     )

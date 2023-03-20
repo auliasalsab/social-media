@@ -15,47 +15,27 @@ class Comment < ApplicationRecord
   validates :user_id, presence: true
   validates :post_id, presence: true
 
-
   def get_post_by_id
-    # comment = self.comments.where(parent_id: data)
-    # comment_count = self.comments.count
     return(
       {
         id: self.id,
-        # user: {id: self.user["id"], name: self.user["name"]},
-        # caption: self.caption,
-        comment_text: self.comment_text,
+        post: self.post,
         user_id: self.user_id,
-        post_id: self.post_id,
-        # parent_id: child_comment(self.post_id),
-        # comment: new_comment_attributes(comment),
-        # comment: new_comment_attributes(comment),
-        # type: type_post(self.post_type - 1),
-        # total_reply_commnet: child_comment(self.post_id),
+        like: self.likes.count,
+        children_comment: self.children.map { |data| data.child_comment },
+        comment_text: self.comment_text,
         created: self.created_at
       }
     )
   end
 
-  def child_comment(child_id)
-    Comment.where(parent_id: child_id)
+  def child_comment
+    {
+      parent_id: self.parent_id,
+      post_id: self.post_id,
+      id: self.id,
+      like: self.likes.count,
+      comment_text: self.comment_text
+    }
   end
-
-  def new_comment_attributes(datas)
-    return(
-      datas.map do |data|
-        {
-          id: data.id,
-          comment_text: data.comment_text,
-          user_id: self.user["id"],
-          name_comment: self.user["name"],
-          total_reply_commnet: child_comment(data.id),
-          comment_date: data.created_at
-        }
-      end
-    )
-  end
-
-
-
 end
